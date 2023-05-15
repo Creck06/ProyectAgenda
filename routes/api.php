@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\SalonController;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,3 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('registrar',[AuthController::class,'register']);
 Route::post('loguear',[AuthController::class,'login']);
+Route::middleware('auth:sanctum')->get('/user',function(Request $request){
+
+});
+Route::apiResource('v1/Salones',SalonController::class);
+Route::apiResource('v1/estados',EstadoController::class);
