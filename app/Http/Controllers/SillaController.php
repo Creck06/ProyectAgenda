@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+<<<<<<< HEAD
 
+=======
+use App\Models\tiposilla;
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
 use Illuminate\Http\Request;
 
 class SillaController extends Controller
@@ -13,7 +17,11 @@ class SillaController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         //
+=======
+        return tiposilla::all();
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
     }
 
     /**
@@ -34,7 +42,16 @@ class SillaController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         //
+=======
+        $inputs=$request->input();
+        $respuesta=tiposilla::create($inputs);
+        return response()->json([
+            'datos'=>$respuesta,
+            'mensaje'=>'Silla creado de manera correcta',
+        ]);
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
     }
 
     /**
@@ -45,7 +62,23 @@ class SillaController extends Controller
      */
     public function show($id)
     {
+<<<<<<< HEAD
         //
+=======
+        $existe=tiposilla::find($id);
+
+        if( isset($existe)){
+            return response()->json([
+                'datos'=>$existe,
+                'mensaje'=>'Silla encontrado de manera correcta',
+            ]);
+        }else{
+            return response()->json([
+                'error'=>true,
+                'mensaje'=>'no existe la silla',
+            ]);
+        }
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
     }
 
     /**
@@ -68,7 +101,26 @@ class SillaController extends Controller
      */
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
         //
+=======
+        $existe=tiposilla::find($id);
+        if( isset($existe)){
+            $existe->Descripcion=$request->Descripcion;
+            
+            if( $existe->save()){
+                return response()->json([
+                    'datos'=>$existe,
+                    'mensaje'=>'Silla actualizado de manera correcta',
+                ]);
+            }
+        }else{
+            return response()->json([
+                'error'=>true,
+                'mensaje'=>'no existe la silla',
+            ]);
+        }
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
     }
 
     /**
@@ -79,6 +131,30 @@ class SillaController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< HEAD
         //
+=======
+        $existe=tiposilla::find($id);
+
+        if( isset($existe)){
+           $res= tiposilla::destroy($id);
+           if($res){
+             return response()->json([
+                'datos'=>$existe,
+                'mensaje'=>'Silla eliminada de manera correcta',
+            ]);
+           }   else{
+            return response()->json([
+                'error'=>true,
+                'mensaje'=>'no existe la silla',
+            ]);
+        }        
+        }else{
+            return response()->json([
+                'error'=>true,
+                'mensaje'=>'no existe la silla',
+            ]);
+        }
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
     }
 }

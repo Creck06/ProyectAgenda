@@ -29,8 +29,13 @@ class DatabaseSeeder extends Seeder
         estado::factory()
             ->count(2)
             ->sequence(
+<<<<<<< HEAD
                 ['Descripcion' => 'Admin'],
                 ['Descripcion' => 'User'],
+=======
+                ['Descripcion' => 'Activo'],
+                ['Descripcion' => 'Inactivo'],
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
             )
             ->create();
 

@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+<<<<<<< HEAD
+=======
+use App\Models\tipodistribucion;
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
 
 use Illuminate\Http\Request;
 
@@ -13,7 +17,11 @@ class DistribucionController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         //
+=======
+        return tipodistribucion::all();
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
     }
 
     /**
@@ -34,7 +42,16 @@ class DistribucionController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         //
+=======
+        $inputs=$request->input();
+        $respuesta=tipodistribucion::create($inputs);
+        return response()->json([
+            'datos'=>$respuesta,
+            'mensaje'=>'Distribución creada de manera correcta',
+        ]);
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
     }
 
     /**
@@ -45,7 +62,23 @@ class DistribucionController extends Controller
      */
     public function show($id)
     {
+<<<<<<< HEAD
         //
+=======
+        $existe=tipodistribucion::find($id);
+
+        if( isset($existe)){
+            return response()->json([
+                'datos'=>$existe,
+                'mensaje'=>'Distribución encontrada de manera correcta',
+            ]);
+        }else{
+            return response()->json([
+                'error'=>true,
+                'mensaje'=>'no existe la distribución',
+            ]);
+        }
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
     }
 
     /**
@@ -68,7 +101,26 @@ class DistribucionController extends Controller
      */
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
         //
+=======
+        $existe=tipodistribucion::find($id);
+        if( isset($existe)){
+            $existe->Descripcion=$request->Descripcion;
+            
+            if( $existe->save()){
+                return response()->json([
+                    'datos'=>$existe,
+                    'mensaje'=>'Distribución actualizada de manera correcta',
+                ]);
+            }
+        }else{
+            return response()->json([
+                'error'=>true,
+                'mensaje'=>'no existe la distribución',
+            ]);
+        }
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
     }
 
     /**
@@ -79,6 +131,30 @@ class DistribucionController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< HEAD
         //
+=======
+        $existe=tipodistribucion::find($id);
+
+        if( isset($existe)){
+           $res= tipodistribucion::destroy($id);
+           if($res){
+             return response()->json([
+                'datos'=>$existe,
+                'mensaje'=>'Distribución eliminada de manera correcta',
+            ]);
+           }   else{
+            return response()->json([
+                'error'=>true,
+                'mensaje'=>'no existe la distribución',
+            ]);
+        }        
+        }else{
+            return response()->json([
+                'error'=>true,
+                'mensaje'=>'no existe la distribución',
+            ]);
+        }
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
     }
 }

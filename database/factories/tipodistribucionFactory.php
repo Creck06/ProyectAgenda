@@ -17,7 +17,12 @@ class tipodistribucionFactory extends Factory
     public function definition()
     {
         return [
+<<<<<<< HEAD
             'Descripcion'=>$this->faker->name(),
+=======
+            'id'=>$this->faker->name(),
+            'Descripcion'=>$this->faker->lastname(),
+>>>>>>> be0e96c7078bf928b19e5abab03d6c0c977432ed
         ];
     }
 }
